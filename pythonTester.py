@@ -1,6 +1,6 @@
 #This file is used to test python code by printing out my name
 
-Andrew Cohen
+#Andrew Cohen
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
