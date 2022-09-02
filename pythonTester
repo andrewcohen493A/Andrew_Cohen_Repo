@@ -2,4 +2,8 @@
 
 Andrew Cohen
 
-print('Andrew Cohen')
+def print(name):
+    print('{name}')
+
+if __name__ == '__main__':
+    print('Andrew Cohen')
