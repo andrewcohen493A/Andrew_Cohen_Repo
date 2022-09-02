@@ -1,28 +1,19 @@
-# Package to connect to PostgreSQL
-import psycopg2
+"""
+This class tests the connection to your DB by creating a test table
+"""
 
+# Import the connector class
+import DBConnector
 
-class MyDB(object):
-    _db_connection = None
-    _db_cur = None
+# Create a new instance of the DB
+my_db = DBConnector.MyDB()
 
-    def __init__(self):
-        # Ensure you are using your credentials here.
-        # No need to change if you followed the instructions in the class/ slides.
+# SQL command to create a new table
+sqlCommand = 'CREATE TABLE IF NOT EXISTS Cohen_Andrew_Table (Cohen_Andrew_Table_MID  VARCHAR, Cohen_Andrew_Table_MNAME  VARCHAR);'
 
-        self._db_connection = psycopg2.connect(host='localhost', user='cyberUser', password='c-4-9-3-A',
-                                               dbname='cybrDB')
-        self._db_connection.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
-        self._db_cur = self._db_connection.cursor()
+# Message to display upon table creation. Not integrated yet.
+sqlMessage = 'Table Test created successfully. Please access pgAdmin to verify table was created successfully'
 
-    def query(self, query, params):
-        first_return = self._db_cur.execute(query, params)
-        try:
-            return_me = self._db_cur.fetchall()
-        except Exception:
-            return_me = first_return
-        return return_me
+# Execute the SQL command.
+my_db.query(sqlCommand, '')
 
-    def __del__(self):
-        if self._db_connection is not None:
-            self._db_connection.close()
