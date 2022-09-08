@@ -5,8 +5,11 @@ pseudo code
 enter your first number1 "this will be stored in int num1"
 
 enter your operations "store in op variable"
+ask user for a specific operation + - * /
 
 enter your second number2 "this will be stored in int num2"
+
+display the outputs of the numbers being given
 
 
 
