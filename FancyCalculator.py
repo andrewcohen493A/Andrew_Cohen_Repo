@@ -7,10 +7,10 @@ accepts one user input, the equation and prints the output
 #display message to user
 print("Hello user, this is a calculator")
 
-equation= input("provide me with equation:")
+equation = input("provide me with equation:")
 print("Answer: " + str(eval(equation)))
 
-#val1 = equation.split(' ')[0]
+val1 = print(equation.split(' ')[0])
 #op = equation.split(' ')[1]
 #val2 = equation.split(' ')[2]
 
