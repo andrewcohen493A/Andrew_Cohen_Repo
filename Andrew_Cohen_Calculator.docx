@@ -13,4 +13,4 @@ call each inputs with if else statements
 display the outputs of the numbers being given
 
 
-
+MJ: Be more specific with your if statement. Do something like this: If the operation is +, then print value1 + value2... etcc.
