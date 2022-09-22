@@ -3,7 +3,7 @@ Andrew Cohen
 this is a Fancy ish Calc
 accepts one user input, the equation and prints the output
 """
-def Fancy_Calculator(equation):
+def Fancy_Calculator():
 
    #display message to user
    print("Hello user, this is a calculator")
