@@ -1,7 +1,7 @@
 """
 Andrew Cohen
 this is a Fancy ish Calc
-accepts one user input, the equation and prints the output
+accepts one user input, the equation, and prints the output
 """
 def Fancy_Calculator():
 

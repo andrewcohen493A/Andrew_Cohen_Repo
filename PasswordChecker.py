@@ -1,36 +1,16 @@
 """
 Andrew Cohen
 Password Checker
+
+runs through the password that will be entered by the user and if the password entered meets the required fields than
+password will return secure
 """
 
 def Correct_Password_Response(password):
 
-    lower, upper, symbol, dig = 0, 0, 0, 0  #creating a variable for each requirment and making it zero
-    guess = False
-    while guess is False:  #runs a loop till the user puts in a correct password
-        passwordInput = input("Password does not meet criteria please provide upper case, number, lowercase, and at least 1 symbol !@#$% ")
-        if (len(passwordInput) >= 8):   #set lenght for password
-            for i in passwordInput:
+    symbol = "!@#$%" #sets the required symbols that can be used
 
-                # counting lowercase alphabets
-                if (i.islower()):    #looks for lower case and adds one so recognize that it has met the requirment same for the rest
-                    lower+=1
-
-                # counting uppercase alphabets
-                if (i.isupper()):
-                    upper+=1
-
-                # counting digits
-                if (i.isdigit()):
-                    dig+=1
-
-                # counting the mentioned special characters
-                if(i=='!'or i=='@' or i=='#' or i=='$' or i=='%'):
-                    symbol+=1
-
-        if (lower>=1 and upper>=1 and symbol>=1 and dig>=1 and lower+symbol+upper+dig==len(passwordInput)):
-            guess = True
-            print("Valid Password")
-            # here since we have counted the number of each we set each var >=1 and when the password is entered it runs through the if that was made
-        else:
-            print("Invalid Password, try again")
+    if len(password) >= 8 and True in [num.isdigit() for num in password] and True in [s in symbol for s in password]:
+        return input("Secure Password")  #this one statement sets the requirements needed to make a valid password and if everything is true than it is a secure password
+    else:
+        return input("Not Secure") #anything that is not met will return a not secure password
