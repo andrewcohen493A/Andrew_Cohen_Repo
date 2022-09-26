@@ -2,7 +2,8 @@
 Andrew Cohen
 Main screen to call each file
 """
-from In_Class_Activities import FancyCalculator, Activity_3B
+from In_Class_Activities import FancyCalculator
+from In_Class_Activities import Activity_3B
 from Homeworks import Homework_1
 
 
