@@ -1,5 +1,5 @@
+from Practices import CircleProgram
 
-import CircleProgram
 
 def main():
     thediameter = 10.9

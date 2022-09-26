@@ -3,7 +3,7 @@ This class tests the connection to your DB by creating a test table
 """
 
 # Import the connector class
-import DBConnector
+from Practices import DBConnector
 
 # Create a new instance of the DB
 my_db = DBConnector.MyDB()

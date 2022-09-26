@@ -2,9 +2,8 @@
 Andrew Cohen
 Main screen to call each file
 """
-import Andrew_Cohen_Calculator
-import FancyCalculator
-import PasswordChecker
+from In_Class_Activities import FancyCalculator
+
 
 def main():
     program = int(input("Hello, Which program would you like to use Simple Calc(1), Fancy Calc(2), or Password Checker(3): "))
