@@ -6,6 +6,7 @@ from In_Class_Activities import FancyCalculator
 from In_Class_Activities import Activity_3B
 from Homeworks import Homework_1
 
+# MJ: Add comment before each line of code :)
 
 def main():
     program = int(input("Hello, Which program would you like to use Simple Calc(1), Fancy Calc(2), or Password Checker(3): "))
