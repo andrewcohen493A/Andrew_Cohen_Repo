@@ -33,7 +33,7 @@ for Bugnum in BugID :
     print(bug)
 
 #pulls all the names of the bugs on the page
-Bugname = main_tree.xpath('//*[@class="buglisting-row"]/div[2]/div[1]/a//text()')
+Bugname = main_tree.xpath('//*[@class="buglisting-row"]/div[2]/div[2]/span[1]//text()')
 for Bug in Bugname :
-    bugpackage = Bug.replace(',', '')
+    bugpackage = Bug.replace(' ', '')
     print(bugpackage)
