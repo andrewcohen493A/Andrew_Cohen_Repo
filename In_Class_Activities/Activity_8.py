@@ -28,9 +28,12 @@ print(numbers)
 
 #gets the bug ID that each bug has
 BugID = main_tree.xpath('//*[@class="bugnumber"]//text()')
-BugID = str(BugID).replace('#', "")
-print(BugID)
+for Bugnum in BugID :
+    bug = Bugnum.replace('#', '')
+    print(bug)
 
 #pulls all the names of the bugs on the page
-Bugname = main_tree.xpath('//*[@class="bugtitle"]//text()')
-print(Bugname)
+Bugname = main_tree.xpath('//*[@class="buglisting-row"]/div[2]/div[1]/a//text()')
+for Bug in Bugname :
+    bugpackage = Bug.replace(',', '')
+    print(bugpackage)
