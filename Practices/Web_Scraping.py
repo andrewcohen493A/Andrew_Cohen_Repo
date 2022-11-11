@@ -13,7 +13,7 @@ def get_web_tree(link):
     :return: The tree element created from the page
     """
     # Welcome message
-    print('Obtaining the page: ',str(link))
+    #print('Obtaining the page: ',str(link))
     # get the page
     page = requests.get(link)
     # get the elements from the page

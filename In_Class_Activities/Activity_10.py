@@ -24,7 +24,7 @@ print(numberofBugs)
 #Gains number of total bugs
 noOFBugs = int(numberofBugs)
 #Number of total pages that we will have
-noOFPages = (int(noOFBugs/75))+1
+noOFPages = (int(noOFBugs)/75)+1
 pageCounter = 0
 startCounter = 0
 newStart = ""
