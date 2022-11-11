@@ -1,4 +1,4 @@
-from Practices import CircleProgram
+from In_Class_Practices import CircleProgram
 
 
 def main():

@@ -3,7 +3,7 @@ Activity #11 starter file
 Insert bug id and bug packages to a DB
 """
 import psycopg2
-from Practices import Web_Scraping as wb
+from In_Class_Practices import Web_Scraping as wb
 
 
 def main():

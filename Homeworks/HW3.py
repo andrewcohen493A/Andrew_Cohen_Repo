@@ -2,7 +2,7 @@
 Andrew Cohen
 """
 import requests
-from Practices import Web_Scraping as wb
+from In_Class_Practices import Web_Scraping as wb
 import re
 """
 Homework #3 objective is to fill out and complete each of the following methods.    
