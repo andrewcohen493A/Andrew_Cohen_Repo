@@ -49,17 +49,11 @@ def GetBugsLink(page_link):
         startCounter += 1
 
         # combine page number with start string
-        newStart = (f'{bid}' + str(startCounter))
-
-        # combine page number with memo string
-        bugidnum = f'{bid}' + str(startCounter)
-
+        newStart = (f'{bid}' + str(BugsLink))
         linkx = BugsLink.replace(f'{BugID}', newStart)
-        linkx = linkx.replace(f'{bid}', bugidnum)
-
         bug_pages_list.append(linkx)
         count += 1
-        return bug_pages_list
+    return bug_pages_list
 
 
 
