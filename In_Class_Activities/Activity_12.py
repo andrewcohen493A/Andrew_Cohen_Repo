@@ -37,32 +37,25 @@ def GetBugTitles(page_link):
     return bug_title
 
 def GetBugsLink(page_link):
-    BugPackage = GetBugPackages(page_link)
+
     BugID = GetBugIDs(page_link)
-    # linkForBug = []
-    #
-    # while bug < 75:
-    #     BugsLink = f"https: // bugs.launchpad.net / ubuntu / +source / {BugPackage} / +bug / {BugID}"
-    #     linkForBug.append(BugsLink)
-    #     return
 
     startCounter = 0
     count = 0
     bug_pages_list = []
     while count < 75:
-        package = BugPackage[count]
         bid = BugID[count]
-        BugsLink = f'https: // bugs.launchpad.net / ubuntu / +source / {package} / +bug / {bid}'
+        BugsLink = f'https://bugs.launchpad.net/ubuntu/+bug/{bid}'
         startCounter += 1
 
         # combine page number with start string
-        newStart = (f'{BugPackage}' + str(startCounter))
+        newStart = (f'{bid}' + str(startCounter))
 
         # combine page number with memo string
-        bugpack = f'{BugPackage}' + str(startCounter)
+        bugidnum = f'{bid}' + str(startCounter)
 
         linkx = BugsLink.replace(f'{BugID}', newStart)
-        linkx = linkx.replace(f'{BugPackage}', bugpack)
+        linkx = linkx.replace(f'{bid}', bugidnum)
 
         bug_pages_list.append(linkx)
         count += 1
