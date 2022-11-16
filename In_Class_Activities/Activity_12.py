@@ -36,6 +36,38 @@ def GetBugTitles(page_link):
     bug_title = [ele for ele in ([ele.strip() for ele in bug_title]) if ele != '']
     return bug_title
 
+def GetBugsLink(page_link):
+    BugPackage = GetBugPackages(page_link)
+    BugID = GetBugIDs(page_link)
+    # linkForBug = []
+    #
+    # while bug < 75:
+    #     BugsLink = f"https: // bugs.launchpad.net / ubuntu / +source / {BugPackage} / +bug / {BugID}"
+    #     linkForBug.append(BugsLink)
+    #     return
+
+    startCounter = 0
+    count = 0
+    bug_pages_list = []
+    while count < 75:
+        package = BugPackage[count]
+        bid = BugID[count]
+        BugsLink = f'https: // bugs.launchpad.net / ubuntu / +source / {package} / +bug / {bid}'
+        startCounter += 1
+
+        # combine page number with start string
+        newStart = (f'{BugPackage}' + str(startCounter))
+
+        # combine page number with memo string
+        bugpack = f'{BugPackage}' + str(startCounter)
+
+        linkx = BugsLink.replace(f'{BugID}', newStart)
+        linkx = linkx.replace(f'{BugPackage}', bugpack)
+
+        bug_pages_list.append(linkx)
+        count += 1
+        return bug_pages_list
+
 
 
 link = link = "https://bugs.launchpad.net/ubuntu/+bugs?field.searchtext=&field.status%3Alist=EXPIRED&field.status%3Alist" \
@@ -66,12 +98,12 @@ def main():
     bugsTotal = GetBugIDs(link)
     pagesTotal = GetBugPackages(link)
     bugTitles = GetBugTitles(link)
+    linkForBug = GetBugsLink(link)
     print('Initial Link:\n' + link)
     print('ID of all Bugs:\t', bugsTotal)
     print('Packages of all Bugs:\t', pagesTotal)
     print('Titles of all Bugs:\t', bugTitles)
-
-
+    print('Links for each bug:\t', linkForBug)
 
 
 if __name__ == "__main__":
