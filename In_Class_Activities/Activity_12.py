@@ -58,6 +58,10 @@ def GetBugsLink(page_link):
 def GetBugDescription(page_link):
     """I am trying to get the list of each bug and then with those links pull the xpath that shows the description
     given inside each specific bug"""
+    #MJ: Here, you need to pass the link to EACH bug to get its description. There is no way - that i am aware of-
+    # that can get you all descriptions in a list (similar to the list of all IDs).
+    # In order for tihs to work, you will need to have a list of ALL bugs, then access each bug pare
+    # then get the description. You wil need a for loop either here or in the main.
 
     main_tree = GetBugsLink(page_link)
 
@@ -65,6 +69,27 @@ def GetBugDescription(page_link):
 
     return description
 
+def GetAllBugsDescriptions(list_of_all_bugs_links):
+    """
+    A method that accesses each bug page, and gets its description
+    :param list_of_all_bugs_links: List of aLL bugs pages.
+    :return: list of all bugs descriptions. We shoul dave 75 descriptions one for each bug.
+    """
+    #temp list to hold all descriptions
+    descriptions_list=[]
+    # counter to keep track of pages
+    linkCounter = 0
+    # access each bug link, and get description
+    while linkCounter < 75:
+        print("Displaying descriptions for bug: " + list_of_all_bugs_links[linkCounter])
+        main_tree = wb.get_web_tree(list_of_all_bugs_links[linkCounter])
+        bug_description = main_tree.xpath('//*[@id="maincontentsub"]/div/div/div/div/div[2]//text()')
+        print(bug_description)
+        # add the current description to the list
+        #descriptions_list.append(bug_description)
+        linkCounter = linkCounter +1
+
+    return descriptions_list
 
 
 
@@ -98,13 +123,21 @@ def main():
     pagesTotal = GetBugPackages(link)
     bugTitles = GetBugTitles(link)
     linkForBug = GetBugsLink(link)
-    descriptionForBug = GetBugDescription(linkForBug)
+    #descriptionForBug = GetBugDescription(linkForBug)
+
     print('Initial Link:\n' + link)
     print('ID of all Bugs:\t', bugsTotal)
     print('Packages of all Bugs:\t', pagesTotal)
     print('Titles of all Bugs:\t', bugTitles)
     print('Links for each bug:\t', linkForBug)
-    print('Description: \t', descriptionForBug)
+    #Notice that i am only calling the method here to dsiplay descriptions ONLY.
+    # We are not using what the method returns yet
+    # Can you figure this out ;)
+    GetAllBugsDescriptions(linkForBug)
+    #print('Description: \t', descriptionForBug)
+    #print("All Descriptions:\n"+ allBugsDescriptions)
+    #print(str(len(allBugsDescriptions)))
+
 
 
 if __name__ == "__main__":
