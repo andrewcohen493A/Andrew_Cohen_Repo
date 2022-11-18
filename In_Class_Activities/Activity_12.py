@@ -55,19 +55,6 @@ def GetBugsLink(page_link):
         count += 1
     return bug_pages_list
 
-def GetBugDescription(page_link):
-    """I am trying to get the list of each bug and then with those links pull the xpath that shows the description
-    given inside each specific bug"""
-    #MJ: Here, you need to pass the link to EACH bug to get its description. There is no way - that i am aware of-
-    # that can get you all descriptions in a list (similar to the list of all IDs).
-    # In order for tihs to work, you will need to have a list of ALL bugs, then access each bug pare
-    # then get the description. You wil need a for loop either here or in the main.
-
-    main_tree = GetBugsLink(page_link)
-
-    description = main_tree.xpath('//*[@id="yui_3_10_3_1_1668728702892_275"]//text()')
-
-    return description
 
 def GetAllBugsDescriptions(list_of_all_bugs_links):
     """
@@ -86,10 +73,18 @@ def GetAllBugsDescriptions(list_of_all_bugs_links):
         bug_description = main_tree.xpath('//*[@id="maincontentsub"]/div/div/div/div/div[2]//text()')
         print(bug_description)
         # add the current description to the list
-        #descriptions_list.append(bug_description)
+        descriptions_list.append(bug_description)
         linkCounter = linkCounter +1
 
     return descriptions_list
+
+def GetCEV(list_of_all_bugs_links, page_link):
+    bug_description = GetAllBugsDescriptions(list_of_all_bugs_links)
+    title = GetBugTitles(page_link)
+    if bug_description == 'CVE-' or title == 'CVE':
+        print('Security Related')
+    else:
+        print('Not Security Related')
 
 
 
@@ -123,20 +118,16 @@ def main():
     pagesTotal = GetBugPackages(link)
     bugTitles = GetBugTitles(link)
     linkForBug = GetBugsLink(link)
-    #descriptionForBug = GetBugDescription(linkForBug)
 
     print('Initial Link:\n' + link)
     print('ID of all Bugs:\t', bugsTotal)
     print('Packages of all Bugs:\t', pagesTotal)
     print('Titles of all Bugs:\t', bugTitles)
     print('Links for each bug:\t', linkForBug)
-    #Notice that i am only calling the method here to dsiplay descriptions ONLY.
-    # We are not using what the method returns yet
-    # Can you figure this out ;)
-    GetAllBugsDescriptions(linkForBug)
-    #print('Description: \t', descriptionForBug)
-    #print("All Descriptions:\n"+ allBugsDescriptions)
-    #print(str(len(allBugsDescriptions)))
+
+    description = GetAllBugsDescriptions(linkForBug)
+    GetCEV(linkForBug, link)
+    print(str(len(description)))
 
 
 
