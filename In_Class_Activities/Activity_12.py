@@ -75,16 +75,12 @@ def GetAllBugsDescriptions(list_of_all_bugs_links):
         # add the current description to the list
         descriptions_list.append(bug_description)
         linkCounter = linkCounter +1
-
+        # title = GetBugTitles(list_of_all_bugs_links)
+        if bug_description == 'CVE-':
+            print('Security Related')
+        else:
+            print('Not Security Related')
     return descriptions_list
-
-def GetCEV(list_of_all_bugs_links, page_link):
-    bug_description = GetAllBugsDescriptions(list_of_all_bugs_links)
-    title = GetBugTitles(page_link)
-    if bug_description == 'CVE-' or title == 'CVE':
-        print('Security Related')
-    else:
-        print('Not Security Related')
 
 
 
@@ -126,7 +122,6 @@ def main():
     print('Links for each bug:\t', linkForBug)
 
     description = GetAllBugsDescriptions(linkForBug)
-    GetCEV(linkForBug, link)
     print(str(len(description)))
 
 
