@@ -55,6 +55,17 @@ def GetBugsLink(page_link):
         count += 1
     return bug_pages_list
 
+def GetBugDescription(page_link):
+    """I am trying to get the list of each bug and then with those links pull the xpath that shows the description
+    given inside each specific bug"""
+
+    main_tree = GetBugsLink(page_link)
+
+    description = main_tree.xpath('//*[@id="yui_3_10_3_1_1668728702892_275"]//text()')
+
+    return description
+
+
 
 
 link = link = "https://bugs.launchpad.net/ubuntu/+bugs?field.searchtext=&field.status%3Alist=EXPIRED&field.status%3Alist" \
@@ -71,6 +82,7 @@ link = link = "https://bugs.launchpad.net/ubuntu/+bugs?field.searchtext=&field.s
               ".has_blueprints=on&field.has_no_blueprints.used=&field.has_no_blueprints=on&search=Search&orderby" \
               "=-importance&memo=75&start=0 "
 
+
 # Get links to all bug pages of Ubuntu Vulnerabilities
 # Also Global
 bugsLinks_list = HW3.Generate_Links_For_All_Bugs_Pages(link)
@@ -86,11 +98,13 @@ def main():
     pagesTotal = GetBugPackages(link)
     bugTitles = GetBugTitles(link)
     linkForBug = GetBugsLink(link)
+    descriptionForBug = GetBugDescription(linkForBug)
     print('Initial Link:\n' + link)
     print('ID of all Bugs:\t', bugsTotal)
     print('Packages of all Bugs:\t', pagesTotal)
     print('Titles of all Bugs:\t', bugTitles)
     print('Links for each bug:\t', linkForBug)
+    print('Description: \t', descriptionForBug)
 
 
 if __name__ == "__main__":
