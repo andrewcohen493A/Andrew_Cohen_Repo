@@ -14,11 +14,12 @@ def CreateTablesAndFillData():
     """
 
     # Your code goes here.
-    # my_db.query('CREATE TABLE AndrewCohen_users(Username VARCHAR, Password VARCHAR, Admin Boolean)', '')
-
+    my_db.query('CREATE TABLE AndrewCohen_users(Username VARCHAR, Password VARCHAR, Admin Boolean)', '')
+    # @MJ: You do not really need to have the admin values in "". These should remain boolean.
     users = ["User1", "User2", "User3"]
     password = ["Pass1", "Pass2", "Pass3"]
-    admin = ["true", "false", "false"]
+    #admin = ["true", "false", "false"]
+    admin = [True, False, False]
 
     counter = 0
     while counter < len(users):
